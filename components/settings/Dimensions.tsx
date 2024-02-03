@@ -13,8 +13,13 @@ type Props = {
   handleInputChange: (property: string, value: string) => void;
 };
 
-const Dimensions = ({ width, height, isEditingRef, handleInputChange }: Props) => (
-  <section className='flex flex-col border-b border-primary-grey-200'>
+const Dimensions = ({
+  width,
+  height,
+  isEditingRef,
+  handleInputChange,
+}: Props) => (
+  <section className='flex flex-col border-b border-white'>
     <div className='flex flex-col gap-4 px-6 py-3'>
       {dimensionsOptions.map((item) => (
         <div
@@ -33,7 +38,7 @@ const Dimensions = ({ width, height, isEditingRef, handleInputChange }: Props) =
             min={10}
             onChange={(e) => handleInputChange(item.property, e.target.value)}
             onBlur={(e) => {
-              isEditingRef.current = false
+              isEditingRef.current = false;
             }}
           />
         </div>

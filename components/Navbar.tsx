@@ -26,6 +26,8 @@ const Navbar = ({
     navigator.mediaDevices
       .getDisplayMedia({
         video: true,
+        //@ts-ignore
+        preferCurrentTab: true,
       })
       .then((stream): any => {
         const recorder = new MediaRecorder(stream);
@@ -56,8 +58,8 @@ const Navbar = ({
   };
 
   return (
-    <nav className='flex select-none items-center justify-between gap-4 bg-primary-black px-5 text-white'>
-      <Image src='/assets/logo.svg' alt='FigPro Logo' width={58} height={20} />
+    <nav className='flex select-none items-center justify-between gap-4 bg-red-900 px-5 text-white'>
+      <h2 className='text-xl'>Visionary</h2>
 
       <ul className='flex flex-row'>
         {navElements.map((item: ActiveElement | any) => (
@@ -68,7 +70,7 @@ const Navbar = ({
               handleActiveElement(item);
             }}
             className={`group flex items-center justify-center px-2.5 py-5
-            ${isActive(item.value) ? "bg-primary-green" : "hover:bg-primary-grey-200"}
+            ${isActive(item.value) ? "bg-white" : "hover:bg-white"}
             `}
           >
             {/* If value is an array means it's a nav element with sub options i.e., dropdown */}
@@ -106,7 +108,13 @@ const Navbar = ({
           </li>
         ))}
 
-        <button onClick={startRecord}> Start </button>
+        <button
+          onClick={startRecord}
+          className='m-4 w-20 rounded-lg border hover:bg-white hover:text-black'
+        >
+          {" "}
+          Start{" "}
+        </button>
       </ul>
 
       <ActiveUsers />
